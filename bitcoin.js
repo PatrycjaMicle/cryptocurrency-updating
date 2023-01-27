@@ -64,6 +64,4 @@ function coinDetails() {
     update("change").innerHTML = change_24.toFixed(2) + "%";
     update("volume").innerHTML = "€ " + volume_24.toLocaleString();
     update("mkt").innerHTML = "€ " + mkt_cap.toLocaleString();
-    update("update").innerHTML = "Last updated: " + lastupdate;
-
 }
