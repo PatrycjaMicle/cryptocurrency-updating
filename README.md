@@ -13,8 +13,8 @@ Write a name of a searched coin into input. Click on search icon to see the late
 
 ## Used technologies
 
-Javascript, using CoinGecko API.
+Javascript, using CoinGecko API, HTML5, CSS.
 
 ## Link
 
-[play](https://patrycjamicle.github.io/crypto/)
+[check](https://patrycjamicle.github.io/cryptocurrency-updating/)

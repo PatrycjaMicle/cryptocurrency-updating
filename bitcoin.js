@@ -4,9 +4,9 @@ function getApi(url) {
     let daten;
     let datenJSON;
 
-    function getData(x) {
+    function getData(url) {
         const request = new XMLHttpRequest();
-        request.open("GET", x, false);
+        request.open("GET", url, false);
         request.send();
         return request.responseText;
     }
