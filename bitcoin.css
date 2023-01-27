@@ -28,7 +28,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 80%;
-    background: rgba(90, 90, 90, 0.4);
+    background: rgba(90, 90, 90, 0.9);
     border-radius: 1em;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -78,8 +78,8 @@ button {
     margin-left: 2px;
     border-radius: 60%;
     border: none;
-    height: 2.5em;
-    width: 2.5em;
+    height: 2.5rem;
+    width: 2.5rem;
     outline: none;
     background: lightgrey;
 }
@@ -89,6 +89,6 @@ button:hover {
 }
 
 .searchImg {
-    height: 15px;
+    height: 10px;
     width: auto;
 }

@@ -1,4 +1,24 @@
-document.getElementById("searchButton").setAttribute("onclick", "coinDetails()");
+document.getElementById("searchButton").addEventListener("click", function(){
+    coinDetails();
+    startLoading();
+    stopLoading()
+});
+
+document.getElementById("coinName").addEventListener("keyup", function(event) {
+    if (event.code === 'Enter'){
+        event.preventDefault();
+        coinDetails();
+        startLoading();
+        stopLoading()
+    }
+});
+function startLoading() {
+    document.body.style.cursor = "wait";
+}
+
+function stopLoading() {
+    document.body.style.cursor = "default";
+}
 
 function getApi(url) {
     let daten;
@@ -23,7 +43,6 @@ function update(id) {
 }
 
 function coinDetails() {
-
     var listUrl = "https://api.coingecko.com/api/v3/coins/list";
     var coinList = getApi(listUrl);
 
@@ -45,14 +64,11 @@ function coinDetails() {
     var coinUrl = "https://api.coingecko.com/api/v3/simple/price?ids=" + coinId + "&vs_currencies=eur&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true&precision=2"
     var coinProperties = getApi(coinUrl);
 
-
     var coin = coinProperties[coinId];
     var price = coin.eur;
     var change_24 = coin.eur_24h_change;
     var volume_24 = coin.eur_24h_vol;
     var mkt_cap = coin.eur_market_cap;
-    var lastupdate = coin.last_updated_at;
-
 
     var url_ticker = "https://api.coingecko.com/api/v3/coins/" + coinId + "?tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=true";
     var ticker = getApi(url_ticker);
