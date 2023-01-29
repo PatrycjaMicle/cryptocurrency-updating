@@ -30,7 +30,7 @@ function getApi(url) {
     daten = JSON.parse(datenJSON);
     return daten;
 }
-function update(id) {
+function getElement(id) {
     return document.getElementById(id);
 }
 function coinDetails() {
@@ -40,10 +40,17 @@ function coinDetails() {
     let inputLow = document.getElementById("coinName").value.toLowerCase();
     let input = inputLow[0].toUpperCase() + inputLow.slice(1);
     const coinId = coinList.find(coin => coin.name === input)?.id || null;
-    if(!coinId) return; //If coin is found, it accesses the id property of that object
-                        // and assigns it to the variable coinId.
-                        // If no match is found, coinId is assigned a value of null.
-                        // Then it check if coinId is null, if it is then it will return nothing.
+    const errorElement=document.getElementById('error');
+
+    if(!coinId){
+        errorElement.style.display='block';
+        errorElement.innerHTML="Coin cannot be found.";
+        updateData("images/noImg.jpg",null,null,null,null,null);
+        return;
+    }else{
+        errorElement.innerHTML="";
+        errorElement.style.display='none';
+    }
 
     const coinUrl = "https://api.coingecko.com/api/v3/simple/price?ids=" + coinId + "&vs_currencies=eur&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true&precision=2"
     const coinProperties = getApi(coinUrl);
@@ -56,10 +63,21 @@ function coinDetails() {
     const ticker = getApi(url_ticker);
     const logo_url = ticker.image.thumb;
 
-    update("coin_logo").src = logo_url;
-    update("coin").innerHTML = coinId.toUpperCase();
-    update("price").innerHTML = "€ " + price;
-    update("change").innerHTML = change_24.toFixed(2) + "%";
-    update("volume").innerHTML = "€ " + volume_24.toLocaleString();
-    update("mkt").innerHTML = "€ " + mkt_cap.toLocaleString();
+    updateData(
+        logo_url,
+        coinId.toUpperCase(),
+        "€ " + price,
+        change_24.toFixed(2) + "%",
+        "€ " + volume_24.toLocaleString(),
+        "€ " + mkt_cap.toLocaleString()
+    );
+
+    function updateData(logo, name,price,change, volume, mkt){
+        getElement("coin_logo").src = logo;
+        getElement("coin").innerHTML = name;
+        getElement("price").innerHTML = price;
+        getElement("change").innerHTML = change;
+        getElement("volume").innerHTML = volume;
+        getElement("mkt").innerHTML = mkt;
+    }
 }

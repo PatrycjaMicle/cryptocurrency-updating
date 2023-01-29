@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url("background.jpg");
+    background-image: url("images/background.jpg");
     background-position: inherit;
     color: #f5f5f5;
     padding: 2em;
@@ -90,5 +90,22 @@ button:hover {
 
 .searchImg {
     height: 10px;
+    width: auto;
+}
+
+#error
+{
+    display:none;
+    color: #d31010;
+    font-weight: bold;
+    margin-top: 1rem;
+    background: #ffffff;
+    padding: 0.3rem;
+    border-radius: 3px;
+}
+
+#coin_logo
+{
+    height: 34px;
     width: auto;
 }
